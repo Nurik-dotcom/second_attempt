@@ -1,0 +1,33 @@
+
+
+{% extends "home.html" %}
+{% block content %}
+<div class="admin__page">
+    <div class="admin__center">
+        <div class="admin__table">
+            <table>
+                <tr>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Отображаемость</th>
+                    <th>Дейсвтия</th>
+
+                </tr>
+                {% for i in productes %}
+                    <tr>
+                        <td>{{ i.product.name }}</td>
+                        <td>{{ i.price }}</td>
+                        <td>{{ i.count }}</td>
+                        <td>{{ i.is_aviable|yesno:"Не выставлено, Выставлено, хз"}}</td>
+
+                        <td>
+                            <a href="{% url 'make_in_unshowable' i.id %}">Убрать с продажи</a> <a href="{% url 'update_product_in_shop' i.id %}">Обновить</a> <a href="{% url 'delete_product' i.id %}">Удалить</a>
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

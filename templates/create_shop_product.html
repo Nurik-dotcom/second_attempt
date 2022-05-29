@@ -1,0 +1,98 @@
+<style>
+	body{
+		margin: 0;
+		padding: 0;
+		background-color: #1e1e1e;
+		color: #E7E7E7;
+		font-family: "Ubuntu", sans-serif;
+	}
+	.center{
+		width: 60%;
+		margin: 100px auto;
+	}
+	form{
+		width: 80%;
+		margin: auto;
+	}
+	form input{
+		
+	}
+	h1{
+		text-align: center;
+	}
+	p{
+		width: 100%;
+		display: flex;
+		align-items:center;
+		justify-content: space-between;
+		color:#E7E7E7;
+	}
+	p label{
+        width: 30%;
+    }
+	p input{
+		margin-left: 10px;
+		width: 100%;
+		padding: 6px 10px;
+        background:none;
+        color:#E7E7E7;
+        border:1px solid #a5a5a5;
+        border-radius:8px;
+	}
+	p select{
+		width: 100%;
+		padding: 6px 10px;
+        margin-left: 10px;
+		border:1px solid #a5a5a5;
+        border-radius: 8px;
+        background:none;
+        color: #E7E7E7;
+	}
+	p textarea{
+		margin-left: 10px;
+		width: 100%;
+		padding: 5px 10px;
+		color: #E7E7E7;
+		border:1px solid #a5a5a5;
+		border-radius: 8px;
+		background:none;
+	}
+	button{
+		width: 50%;
+		height: 35px;
+		margin-bottom: 20px;
+		color: #fff;
+		background: #33A0FF;
+		border:none;
+		border-radius: 5px;
+	}
+	a{
+		background: #33A0FF;
+		border-radius: 5px;
+		text-decoration: none;
+		color:#E7E7E7;
+	}
+	.center__button{
+
+		margin-top: 40px;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		flex-direction:column;
+	}
+</style>
+<div class="center">
+	{% block content %}
+	<form action="" method="post" enctype='multipart/form-data'>{% csrf_token %}
+			<h1>New post</h1>
+			{{ form.as_p }}
+			<div class="center__button">
+				<button type="submit" value="Save">Save</button>
+				<button>
+					<a href="{{request.META.HTTP_REFERER}}">Go back</a>
+				</button>
+
+			</div>
+		</form>
+	{% endblock content %}
+</div>

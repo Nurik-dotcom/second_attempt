@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+{% block content %}
+    <div class="tovar margin__mainpage">
+        <div class="category__title">
+            <form method="get" style="margin-bottom:20px; width: 26%;">
+                {{ filter.form.name }}
+                <input type="submit" /> 
+                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+            </form>
+            <h2>{{ brand_title }}</h2>
+        </div>
+        <div class="center">
+            {% for i in filter.qs %}
+                <div class="tovar__content">
+                    <a href="{% url 'product_detail' i.pk %}">
+                        <div class="img">
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                        <div class="text">
+                            <div class="title">
+                                {{ i.name }}
+                            </div>
+                            <div class="price">
+                                100
+                            </div>
+                            <!-- {% if request.user.is_authenticated %}
+                                <button>
+                                    <img src="@/icons/cart.svg" alt="">
+                                    <a href="{% url 'add_corzina' i.id %}"><p>В корзину</p></a>
+                                </button>
+                            {% else %}
+                                <button>
+                                    <img src="@/icons/cart.svg" alt="">
+                                    <a href="{% url 'login' %}"><p>В корзину</p></a>
+                                </button>
+                            {% endif %} -->
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>   
+{% endblock %}

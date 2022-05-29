@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="brand__detail">
+    <div class="">
+        <div class="brand__name">
+            {{brand}}
+        </div>
+        <div class="brand__container">
+            <div class="brand__info">
+                {% if request.user.is_authenticated %}
+                        <div class="brand__links">
+                            {% if request.user.is_superuser or request.user.profile.brand_member == brand and request.user.profile.status == True and request.user.profile.is_admin == True %}
+                                <a href="{% url 'admin' brand.slug %}">
+                                    Показать работников бренда
+                                </a>
+                                <a href="{% url 'admin_product' brand.slug %}">
+                                    Показать продукты бренда
+                                </a>
+                                <a href="{% url 'create_product'%}">
+                                    Добавить продукт
+                                </a>
+                                <a href="{% url 'brand_products' brand.slug %}">Больше товаров от {{ brand.title }}</a>
+                            {% elif request.user.profile.brand_member == brand and request.user.profile.status == True %}
+                            <a href="{% url 'create_product'%}">
+                                Добавить продукт
+                            </a>
+                            <a href="{% url 'brand_products' brand.slug %}">Больше товаров от {{ brand.title }}</a>
+                            {% else %}
+                                <a href="{% url 'become_member' brand.slug %}">Стать учасником</a>
+                                <a href="{% url 'brand_products' brand.slug %}">Больше товаров от {{ brand.title }}</a>
+                            {% endif %}
+
+                        </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

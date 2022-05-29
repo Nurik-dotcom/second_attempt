@@ -1,0 +1,58 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="corsina margin__mainpage">
+    <div class="corsina__center">
+        {% for item in corsina.items.all %}
+            <div class="corsina__item">
+                <div class="corsina__image">
+                    <div class="corsina__img">
+                        <img src="{{ item.product.image.url }}" alt="">
+                    </div>
+                    {% if item.count == 1%}
+                    <div class="corsina__AddAndRemoveItem">
+                        <div class="corsina__minus corsina__css">
+                            <a href="#">-</a> 
+                        </div>
+                        <div class="corsina__amount">
+                            {{ item.count }}
+                        </div>
+                        
+                        <div class="corsina__add corsina__css">
+                            <a href="{% url 'add_quantite' item.id %}">+</a>
+                        </div>
+                        {% else %}
+                        <div class="corsina__AddAndRemoveItem">
+                            <div class="corsina__minus corsina__css">
+                                <a href="{% url 'minus_quantity' item.id %}">-</a> 
+                            </div>
+                            <div class="corsina__amount">
+                                {{ item.count }}
+                            </div>
+                            
+                            <div class="corsina__add corsina__css">
+                                <a href="{% url 'add_quantite' item.id %}">+</a>
+                            </div>     
+                        {% endif %}               
+                    </div>
+                </div>
+                <div class="corsina__text">
+                    <div class="corsina__price">
+                        {{item.product.price}}
+                    </div>
+                    <div class="corsina__title">
+                        {{item.product.name}}
+                    </div>
+                    <div class="corsina__info">
+
+                    </div>
+                </div>
+                <div class="corsina__RemoveItem">
+                    <a href="{% url 'remove_corzina' item.id %}">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+        <p>{{ corsina.total_price}}</p>
+        <a href="{% url 'buy' %}">Купить</a>
+    </div>
+</div>
+{% endblock %}

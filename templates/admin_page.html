@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="admin__page">
+    <div class="admin__center">
+        <div class="admin__table">
+            <table>
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Разрешить добавлять</th>
+                    <th>Действия</th>
+                    <th>Статус Администратора</th>
+                    <th>Сдать/Убрать Администрторство</th>
+                </tr>
+                {% for i in users %}
+                    <tr>
+                        <td>{{i.user.username}}</td>
+                        <td>{{ i.status|yesno:"Разрешено,Неразрешено,Даже хз" }}</td>
+                        <td><a href="{% url 'make_user_aviable' i.id %}" style="color:#8bd063">Подтвердить</a> | <a href="{% url 'make_user_unaviable' i.id %}" style="color:#ff8c8c">Убрать</a></td>
+                        <td>{{ i.is_brand_admin|yesno:"Администратор,Не Администратов,Даже хз" }}</td>
+                        <td><a href="{% url 'admin_make_user_aviable' i.id %}" style="color:#8bd063">Присвоить</a> | <a href="{% url 'admin_make_user_unaviable' i.id %}" style="color:#ff8c8c">Убрать</a></td></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

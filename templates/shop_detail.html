@@ -1,0 +1,34 @@
+
+
+{% extends "home.html" %}
+{% block content %}
+<div class="brand__detail">
+    <div class="">
+        <div class="brand__name">
+            {{shop.title}}
+        </div>
+        <div class="brand__container">
+            <div class="brand__info">
+                {% if request.user.is_authenticated %}
+                        <div class="brand__links">
+                            {% if request.user.is_superuser or request.user.profile.shop_member == shop and request.user.profile.status == True and request.user.profile.is_shop_admin == True %}
+
+                                <a href="{% url 'shop_product' shop.slug %}">Посмотреть товары</a>
+                                <a href="{% url 'show' shop.slug %}">Добавить продукт из списка</a>
+                                <a href="{% url 'create_product_shop' %}">Создать продукт</a>
+
+                            {% elif request.user.profile.shop_member == brand and request.user.profile.shop_status == True %}
+                            <a href="{% url 'show' shop.slug %}">Добавить продукт из списка</a>
+                            <a href="{% url 'create_product_shop' %}">Создать продукт</a>
+                            {% else %}
+                                <a href="{% url 'become_member' brand.slug %}">Стать учасником</a>
+
+                            {% endif %}
+
+                        </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

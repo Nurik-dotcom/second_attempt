@@ -1,0 +1,68 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="main margin__mainpage">
+    <div>
+        <div class="page__title">
+            <h2>Личный кабинет</h2>
+        </div>
+
+        <div class="user__name">
+			{% if request.user.is_authenticated %}
+            <p>{{ user.username }} |</p>
+
+            {% if user.profile.shop_member %}
+            <a href="{% url 'shop_detail' user.profile.shop_member.slug %}"> <p>Член магазина {{ user.profile.shop_member.title }} | </p></a>
+            {% endif %}
+            {% if user.profile.brand_member %}
+            <a href="{% url 'brand_detail' user.profile.brand_member.slug %}"><p> Член бренда {{ user.profile.brand_member.title }}</p></a>
+            {% endif %}
+			{% else %}
+			<p>****</p>
+			{% endif %}
+        </div>
+        <div class="page__title">
+            <h2>Мои покупки</h2>
+            <a href="{% url 'clear' %}">Очистить историю</a>
+        </div>
+        <div class="tovar__pokupka">
+            <table>
+                <tr>
+					<th>Куплено</th>
+					<th>Название</th>
+                    <th>Доставка</th>
+                    <th>Количества</th>
+                    <th>Цена</th>
+                </tr>
+				{% for i in history.product.all %}
+					<tr>
+						<td>{{i.add_time|date:"M d"}}</td>
+						<td>{{i.name}}</td>
+						<td>{{ i.dostavleno|yesno:"Доставлено,Не Доставлено,Самовывоз" }}</td>
+						<td>{{i.count}}</td>
+						<td>{{i.price}}</td>
+					</tr>
+				{% endfor %}
+            </table>
+        </div>
+    </div>
+    <div style="margin-left:20px">
+        <div class="page__title">
+            <h2>Мои карты</h2>
+        </div>
+        <div class="carta">
+            <div class="bank__carta">
+                <img src="../img/image38.svg" alt="">
+            </div>
+            <p>Номер: **** **** **** 0008</p>
+            <p>Дата: 00/00</p>
+            <p>CVV: ***</p>
+			{% if request.user.is_authenticated %}
+            <p>Владелец карты: {{user}}</p>
+            {% else %}
+            <p>Владелец карты: ***</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

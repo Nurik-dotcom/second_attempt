@@ -1,0 +1,76 @@
+{% extends "home.html" %}
+{% block content %}
+    <div class="margin__mainpage PRODUCT_DETAIL">
+        <div class="category__title">
+            <h2>Страница товара</h2>
+        </div>
+        <div style="margin:20px 0 25px; display:flex" >
+            <div class="tovar__info dflex">
+                <div class="img">
+                    <img src="{{ i.image.url }}" alt="">
+                </div>
+                <div class="text">
+                    <div class="title">
+                        {{ i.name }}
+                    </div>
+                    <div class="tovar__cod textsize">
+                        Код товара: {{ i.id}}
+                    </div>
+                    <div class="creater textsize">
+                        Производитель: 
+                        <a href="{% url 'brand_detail' i.brand.slug %}">
+                            {{ i.brand }}
+                        </a>
+                    </div>
+                    <div class="creater textsize">
+                        В наличии: {{ i.full_count }}
+                    </div>
+                    <!-- <div class="price textsize">
+                        Цена: {{ i.price}}
+                    </div> -->
+                    <!-- {% if request.user.is_authenticated %}
+                        <a href="{% url 'add_corzina' i.id %}">
+                            <div class="add__cart dflex">
+                                <p>В корзину</p>
+                            </div>
+                        </a>
+                    {% else %}
+                        <button>
+                            <a href="{% url 'login' %}">
+                                <div class="add__cart dflex">
+                                    <p>В корзину</p>
+                                </div>
+                            </a>
+                        </button>
+                    {% endif %} -->
+                </div>
+            </div>
+
+            <div class="dostavka">
+                <div class="dostavka__center">
+                    <h2>Самовывоз</h2>
+                    <div class="dostavka__text dflex">
+                        <p>Необходимо дождаться звонка менеджера магазина и согласовать с ним время самовывоза.</p>
+                        <p>Бесплатно</p>
+                    </div>
+                    <div class="dostavka__text dflex">
+                        <p>Доставка курьерской службой магазина, от 2-х дней с момента заказа, в зависимости от загрузки. Стоимость доставки Вам сообщит менеджер.</p>
+                        <p>Стоимость зависит от района</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table>
+            <tr>
+                {% for c in select %}
+                <th><a href="{% url 'shop_detail' c.shop.slug %}">{{ c.shop}}</a></th>
+                <th>{{ c.price }}</th>
+                <th><a href="{% url 'add_corzina' c.id %}">Добавить в корзину</a></th>
+                <th>|</th>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </div>
+
+{% endblock %}

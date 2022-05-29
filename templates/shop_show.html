@@ -1,0 +1,27 @@
+
+{% extends "home.html" %}
+{% block content %}
+    <div class="tovar margin__mainpage">
+        <div class="category__title">
+            <h2>Список доступных товаров</h2>
+        </div>
+        <div class="center">
+            {% for i in productes %}
+                <div class="tovar__content">
+                        <div class="img">
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                        <div class="text">
+                            <div class="title">
+                                {{ i.product.name }}
+                            </div>
+                                <button>
+                                    <img src="@/icons/cart.svg" alt="">
+                                    <a href="{% url 'add_to_shop' i.id %}"><p>Добавить к себе</p></a>
+                                </button>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>   
+{% endblock %}

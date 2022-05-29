@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="admin__page">
+    <div class="admin__center">
+        <div class="admin__table">
+            <table>
+                <tr>
+                    <th>Название</th>
+                    <th>В магазине</th>
+                    <th>Действия</th>
+
+                </tr>
+                {% for i in product %}
+                    <tr>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.is_aviabale|yesno:"В магазине,Не выставлено в магазине,Даже хз" }}</td>
+                        <td>
+                            <a href="{% url 'update_product' i.id %}" style="color:#8bd063">Обновить</a>
+                            <a href="{% url 'make_aviable_product' i.id %}">Выставить</a>
+                            <a href="{% url 'make_unaviable_product' i.id %}">Убрать</a>
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

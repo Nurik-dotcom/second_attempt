@@ -1,0 +1,156 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+	*{
+		margin: 0;
+		padding: 0;
+		background-color:#1e1e1e;
+		color:#E7E7E7;
+		font-family: "Ubuntu", sans-serif;
+	}
+	
+    .login {
+        position: relative;
+        padding: 74px 85px 29px;
+    }
+
+    .login__btn {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background-color: inherit;
+        outline: none;
+        border: none;
+    }
+    .login__header {
+        margin: auto;
+        width: 129px;
+        height: 39px;
+        text-align: left;
+    }
+    .login__title {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 25px;
+        color: #E7E7E7;
+    }
+    .login__text {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #E7E7E7;
+    }
+    .login__modal {
+        margin: 30px auto;
+        width: 270px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        color: #E7E7E7;
+    }
+    .login__modal-btn {
+        padding: 14px;
+        cursor: pointer;
+    }
+    .active {
+        border-bottom: 3px solid #4CB7E4;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .login__body {
+		display: flex;
+		flex-direction: column;
+    }
+
+    input {
+        width: 330px;
+        padding: 15px 16px;
+        outline: none;
+        border-radius: 8px;
+        background-color: inherit;
+        border: 1px solid #7D7E7F;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+		margin: 8px 0;
+    }
+    input:active, input:focus {
+        border: 1px solid #E7E7E7;
+        color: #F8F8FB;
+    }
+    .btn {
+        width: 364px;
+        height: 50px;
+        margin: 23px auto 0;
+        background: #4CB7E4;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #FFFFFF;
+        outline: none;
+    }
+    .login__link {
+        display: block;
+        margin-top: 32px;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 18px;
+        color: #C4C4C4;
+        text-decoration: none;
+        text-align: center;
+    }
+	span{
+		display: none;
+	}
+	label{
+		
+	}
+	a{
+		text-decoration: none;
+	}
+	#div_id_username{
+		margin: 0 auto 8px;
+	}
+	#div_id_password{
+		margin: auto;
+	}
+  </style>
+</head>
+<body>
+  	<div class="login">
+		<div class="login__header">
+			<div class="login__title">BuildPoint</div>
+			<div class="login__text">building materials store</div>
+		</div>
+		<div class="login__form">
+			<div class="login__modal">
+				<a href="{% url 'register' %}">
+					<div class="login__modal-btn">Регистрация</div>
+				</a>
+				<a href="{% url 'login' %}">
+					<div class="login__modal-btn active">Вход</div>
+				</a>
+			</div>
+			<div class="login__body">
+				<form method="POST" style="margin: auto;">
+					{% csrf_token %}
+					{{ login_form|crispy }}
+					<button class="btn" type="">
+						Войти
+					</button>
+					<a href="#" class="login__link">
+						Забыли пароль?
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

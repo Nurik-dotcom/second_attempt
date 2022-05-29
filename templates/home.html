@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Ubuntu", sans-serif;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #1e1e1e;
+            color: #E7E7E7;
+            
+        }
+        .margin__mainpage{
+            margin: 30px 0px 0px 270px;
+        }
+        h2{
+            font-size: 21px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            top: 0;
+            height: 931px;
+            width: 240px;
+            background-color: #1e1e1e;
+            position: fixed;
+            }
+        .navbar__container {
+            margin: 35px 0 0 30px;
+        }
+        .navbar__title {
+            margin-left: 15px;
+            margin-bottom: 30px;
+        }
+        .navbar__title h1 {
+            font-weight: 700;
+            font-size: 22px;
+            color:#E7E7E7;
+        }
+        .navbar__title p {
+            font-weight: 400;
+            font-size: 12px;
+            color: #a5a5a5;
+        }
+
+        .navbar__links {
+            margin-top: 8px;
+        }
+        .navbar__link {
+            display: flex;
+            align-items: center;
+            width: 200px;
+            height: 44px;
+            margin-top: 2px;
+            border-radius: 8px;
+        }
+        .navbar__link img {
+            margin-left: 12px;
+        }
+        .navbar__text {
+            margin-left: 12px;
+            max-width: 110px;
+        }
+        .navbar__link .navbar__text p {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+            color: #a5a5a5;
+        }
+        .navbar__link:hover {
+            background-color: #242424;
+        }
+        .navbar__link__text {
+            display: flex;
+            align-items: center;
+            width: 200px;
+            height: 44px;
+            margin-top: 10px;
+            border-radius: 8px;
+            color: #a5a5a5;
+        }
+        
+        a {
+            color:#a5a5a5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            cursor: pointer;
+        }
+        /* END NAVBAR */
+
+
+
+        /* HEADER */
+        .display__flex{
+            display: flex;
+            align-items: center;
+        }
+        .header{
+        }
+        .header__container{
+            width: 100%;
+            justify-content: space-between;
+        }
+        .header__left{
+            width: 60%;
+        }
+        .header__right{
+            justify-content: flex-end;
+            width: 40%;
+        }
+        .cart{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 40px;
+            width: 50px;
+
+            border-radius: 8px;
+            background-color: #2B2B2B;
+            transition: 0.1s;
+        }
+        .login{
+            display: flex;
+            justify-content: space-around;
+            overflow: hidden;
+
+            width: 160px;
+            height: 40px;
+            margin: 0 20px;
+
+            border-radius: 8px;
+            background-color: #2B2B2B;
+            transition: 0.1s;
+        }
+        .login .logo__img{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            background-color: #a5a5a5;
+        }
+        .login .name{
+            display: flex;
+            margin-left: 10px;
+        }
+        .login p{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+            color: #a5a5a5;
+        }
+        .login:hover, .cart:hover{
+            background-color: #242424;
+        }
+
+        input{
+            width: 100%;
+            height: 40px;
+            background: url(../icons/search.svg);
+            background-repeat: no-repeat;
+            background-position: 10px 9px !important;
+            padding: 14.25px 40px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2B2B2B;
+            color: #a5a5a5;
+        }
+        input::placeholder{
+            color: #a5a5a5;
+        }
+        /* ENDHEADER */
+
+
+        /* CATEGORY_PRODUCT */
+        .tovar{
+           
+        }
+        .category__title{
+            font-size: 14px;
+            line-height: 28px;
+            margin-bottom: 30px;
+        }
+        .category__title p{
+            width: 100%;
+            display: flex;
+            /* justify-content: space-between; */
+            margin: 0 10px 10px 0;
+            color:#a5a5a5;
+        }
+        .category__title form{
+            margin-bottom:20px; 
+            /* width: 26%; */
+        }
+        .category__title p input{
+            margin-left: 10px;
+            /* width: 40%; */
+            padding: 0 15px;
+        }
+        .category__title button{
+            width: 20%;
+            margin-bottom: 10px;
+            padding: 6px 10px;
+            color:#a5a5a5;
+            border-radius:8px;
+            border: 1px solid #a5a5a5;
+            background:none;
+            transition: 0.1s;
+        }
+        .category__title button:hover{
+            
+            border: 1px solid #a5a5a5dd;
+            background-color: #242424;
+        }
+        .category__title select{
+            width: 40%;
+            height: 40px;
+
+            padding: 0 10px;
+            margin-left: 10px;
+            border-radius: 8px;
+            background:none;
+            border: 1px solid #a5a5a5;
+            color: #a5a5a5;
+        }
+        .PRODUCT_DETAIL table{
+            border-collapse: collapse;
+            width: 58.7%;
+            margin: 0;
+        }
+        .center{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .tovar__content{
+            margin-bottom: 25px;
+            margin-right: 25px;
+            width: 260px;
+            height: 320px;
+
+            overflow: hidden;
+            border-radius: 5px;
+            background-color: #2B2B2B;
+        }
+        .tovar__content .img{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 184px;
+            background-color: #E8E8E8;
+        }
+        .tovar__content .img img{
+            width: 100%;
+            height: 100%;
+        }
+        .tovar__content .text{
+            margin: 20px;
+        }
+        .tovar__content .text .title{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        .tovar__content .text .price{
+            margin: 10px 0 20px 0;
+
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 14px;
+            color: #4CB7E4;
+        }
+        .tovar__content .text button{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            background-color: #2b2b2b;
+        }
+        .tovar__content .text button p{
+            margin: 0 0 0 10px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        /* END CATEGORY_PRODUCT  */
+
+
+
+        /* CORSINA */
+        .corsina{
+
+        }
+        .corsina__center{
+            width: 1000px;
+        }
+        .corsina__item{
+            display: flex;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #fff
+        }
+        .corsina__image{
+            width: 250px;
+        }
+        .corsina__image .corsina__img{
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .corsina__image .corsina__img img{
+            width: 100%;
+            height: 100%;
+        }
+        .corsina__image .corsina__AddAndRemoveItem{
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+
+            margin-top: 20px;
+        }
+        .corsina__image .corsina__AddAndRemoveItem .corsina__css{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .corsina__image .corsina__AddAndRemoveItem .corsina__add a{
+            color: #E04E2C;
+            font-size: 35px;
+        }
+        .corsina__image .corsina__AddAndRemoveItem .corsina__minus a{
+            color: #E04E2C;
+            font-size: 35px;
+        }
+        .corsina__image .corsina__AddAndRemoveItem .corsina__amount{
+            color:#fff
+        }
+        .corsina__text{
+            margin-left: 40px;
+            width: 600px;
+        }
+        .corsina__text .corsina__price{
+            color: #4CB7E4;
+        }
+        .corsina__text .corsina__title{
+            margin-top: 20px;
+            color: #ffff;
+        }
+        .corsina__text .corsina__info{
+            color: #ffff;
+        }
+        .corsina__RemoveItem{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .corsina__RemoveItem a{
+            font-size: 20px;
+            font-weight: 400;
+            color: #E04E2C;
+            margin-left: 30px;
+        }
+        /* END CORSINA */
+
+
+        /* PRODUCT_DETAIL */
+        .tovar__info .img{
+            width: 320px;
+            height: 320px;
+            border-radius: 5px;	
+            overflow: hidden;
+            margin: auto;
+        }
+        .tovar__info .img img{
+            width: 100%;
+            height: 100%;
+        }
+        .tovar__info{
+            justify-content: space-between;
+
+            width: 60%;
+            height: 392px;
+
+            border-radius: 5px;
+            background-color: #2B2B2B;
+        }
+        .text{
+            margin-top: 30px;
+            width: 50%;
+            color: #E7E7E7;
+        }
+        .text .title{
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 28px;
+            margin-bottom: 22px;
+        }
+        .text .creater{
+            margin: 22px 0;
+        }
+        .text .tovar__cod{
+
+        }
+        .text .price{
+
+        }
+        .dostavka{
+            margin-left: 20px;
+
+            width: 40%;
+            height: 392px;
+
+            border-radius: 5px;	
+            background-color: #2B2B2B;	
+        }
+        .dostavka__center{
+            width: 80%;
+            margin: 38px auto;
+        }
+        .dostavka__text{
+            align-items: center;
+            margin-top: 25px;
+        }
+        .dostavka__text p{
+            margin-right: 10px;
+        }
+        .textsize{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
+        }
+        .add__cart{
+            justify-content: center;
+            align-items:center;
+
+            width: 198px;
+            height: 35px;
+            margin-top: 20px;
+
+            color:#fff;
+            background: #33A0FF;
+            border-radius: 5px;
+        }
+        .dflex{
+            display: flex;
+        }
+        .textsize a{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
+            color:#E7E7E7
+        }
+        .text button{
+            background: none;
+            border:none;
+        }
+        /* END PRODUCT_DETAIL */
+
+
+
+
+        /* PERSONAL_CABINET */
+        .main{
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .user__name{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 730px;
+            height: 130px;
+
+            margin-top: 25px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #2B2B2B;
+        }
+        .user__name p{
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 14px;
+            color: #B8B8B8;
+        }
+        .tovar__pokupka{
+            width: 100%;
+            min-height: 300px;
+
+            padding: 10px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #2B2B2B;
+        }
+        table{
+            
+            width: 90%;
+            margin: 0 auto;
+        }
+        table tr{
+            margin-top: 15px;
+        }
+
+        .carta{
+            display: flex;
+            flex-direction: column;
+
+            width: 388px;
+            height: 503px;
+
+            margin-top: 25px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #2B2B2B;
+        }
+        .carta .bank__carta{
+            margin: 38px auto;
+        }
+        .carta p{
+            margin: 0 56px auto;
+        }
+        .tovar__pokupka table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0;
+            }
+
+        th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        }   
+        /* END PERSONAL_CABINET */
+
+
+
+
+        /* FOOTER */
+        .footer{
+            
+            height: 100%;
+            background-color: #2B2B2B;
+        }
+        .footer h3{
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            margin-bottom: 15px;
+        }
+        .footer p{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        .footer__container{
+            margin: 40px;
+            width: 100%;
+        }
+        .display__flex{
+            display:flex;
+        }
+            /* footer-top */
+            .footer__top{
+                justify-content: space-between;
+            }
+            .footer__contacts{
+                width: 32%;
+            }
+            .footer__logo h1 {
+            font-weight: 700;
+            font-size: 22px;
+            color: #e7e7e7;
+            }
+            .footer__logo p {
+            font-weight: 400;
+            font-size: 12px;
+            color: #a5a5a5;
+            }
+
+            /* footer-top END */
+            /* footer-bottom */
+            .footer__bottom{
+                margin-top: 20px;
+            }
+            .footer__bottom .contacts{
+                width: 32%;
+                margin-left: 102px;
+            }
+            .contacts input{
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: 1px solid #a5a5a5;
+                color:#E7E7E7;
+                border-radius: 8px;
+            }
+            .contacts button{
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: none;
+                color:#fff;
+                background-color:#33A0FF;
+                border-radius: 8px;
+            }
+            /* footer-bottom END */
+        /* END FOOTER */
+
+
+        /* BRAND DETAIL */
+        .brand__detail{
+            width: 800px;
+            margin: 30px 0 0 270px;
+        }
+        .brand__container{
+            margin: auto;
+            display: flex;
+        }
+        .brand__name{
+            
+            font-size: 26px;
+        }
+        .brand__links{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand__links a{
+            text-decoration: none;
+            color:#E7E7E7;
+            margin: 10px 0 10px 0;
+
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 60px;
+            background-color:#2b2b2b;
+        }
+        .brand__links a:hover{
+            background-color: #3a3939;
+        }
+        /* END BRAND DETAIL */
+
+
+        /* ADMIN PAGE */
+        .admin__page{
+            width: 77%;
+            margin: 30px 0 0 270px;
+        }
+
+        .admin__page table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 50px auto;
+        }
+
+        .admin__page table th, td {
+            width: 25%;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }  
+        .admin__page a{
+            color:#E7E7E7;
+            text-decoration: none;
+        }
+
+        .admin__page .links{
+            display: flex;
+            justify-content: space-between;
+        }
+        /* END ADMIN PAGE */
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header margin__mainpage">
+            <div class="header__container display__flex">
+                <!-- <div class="header__left">
+                     <form method="get">
+                        {{ filter.form.as_p }}
+                        <input type="submit" />
+                    </form> 
+                    <input type="text" placeholder="Поиск по магазину">
+                </div> -->
+                <!-- <div class="header__filter display__flex">
+                    filter
+                </div> -->
+
+                <div class="header__right display__flex">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'corsina' %}">
+                            <div class="cart display__flex">
+                                <img src="../icons/cart.svg" alt="">
+                                <p>{{products}}</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'cabinet' %}">
+                            <div class="login display__flex">
+                                <div class="logo__img">
+                                    
+                                </div>
+                                <div class="name">
+                                    <p>{{user}}</p>
+                                    <a href="{% url 'logout' %}" style="margin-left: 8px;">
+                                        <p>Выйти</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}">
+                            <div class="cart display__flex">
+                                <img src="../icons/cart.svg" alt="">
+                            </div>
+                        </a>
+                        <div class="login display__flex">
+                            <a href="{% url 'login'%}">
+                                <div class="name">
+                                    <p>Войти</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'register'%}">
+                                <div class="name">
+                                    <p>Регис</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="navbar__container">
+                <a href="{% url 'main' %}">
+                    <div class="navbar__title">
+                        <h1>BuildPoint</h1>
+                        <p>building materials store</p>
+                        <!-- <a href="{% url 'all_shop' %}">Все магазины</a> -->
+                    </div>
+                </a>
+                <div class="navbar__title" style="margin: 20px 0 0 15px;">
+                    <h3>Товары</h3>
+                </div>
+                {%for i in categories %}
+                <div class="navbar__links">
+                    <a href="{% url 'category' i.slug %}">
+                        <div class="navbar__link">
+                            <img src="../icons/Name19.svg" alt="">
+                            <div class="navbar__text">
+                                {{i.title}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <div class="navbar__title" style="margin: 20px 0 0 15px;">
+                    <h3>Материалы</h3>
+                </div>
+                {% for i in brands %}
+                <div class="navbar__links">
+                    <a href="{% url 'svoistva' i.slug %}">
+                        <div class="navbar__link">
+                            <img src="../icons/Name19.svg" alt="">
+                            <div class="navbar__text">
+                                {{i.title}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% block content %}
+        {% endblock %}
+        <div class="footer display__flex margin__mainpage">
+            <div class="footer__container">
+                <div class="footer__top display__flex">
+                    <div class="footer__map display__flex ">
+                        <div style="margin-right: 25px">
+                            <h3>Контакты</h3>
+                            <p>87081735186</p>
+                            <p>buildpoint@gmail.com</p>
+                        </div>
+                        <div>
+                            <h3>Адрес</h3>
+                            <p>Кабанбай батыра 49а</p>
+                        </div>
+                    </div>
+                    <div class="footer__contacts">
+                        <div class="links">
+                            <p>Личный кабинет</p>
+                            <p>Моя корзина</p>
+                        </div>             
+                    </div>
+                    <div class="footer__logo">
+                        <h1>BuildPoint</h1>
+                        <p>building materials store</p>                    
+                    </div>
+                </div>
+                <div class="footer__bottom display__flex">
+                    <div class="map">
+                        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8298.527827755223!2d71.42373249138127!3d51.145100131268215!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x68d6552a1212b905!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQkNGB0YLQsNC90LA!5e0!3m2!1sru!2skz!4v1620669807979!5m2!1sru!2skz" width="360px" height="200px" style="border-radius:8px;border:none" allowfullscreen="" loading="lazy"></iframe>
+                    </div>      
+                    <div class="contacts">
+                        <h3>Будьте в курсе новостей</h3>
+                        <p>Подпишитесь на последние обновления и узнайте о новинках и специальных преложениях первыми</p>
+                        <div style="margin-top:45px">
+                            <input type="text" placeholder="Введите вашу почту">
+                            <button>Отправить</button>
+                        </div>
+                    </div>  
+    
+                </div>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
+
