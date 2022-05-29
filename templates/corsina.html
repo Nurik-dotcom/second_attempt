@@ -4,12 +4,11 @@
     <div class="corsina__center">
         {% for item in corsina.items.all %}
             <div class="corsina__item">
-                {% if item.product.image %}
                 <div class="corsina__image">
                     <div class="corsina__img">
                         <img src="{{ item.product.image.url }}" alt="">
                     </div>
-                    {% endif %}
+
                     {% if item.count == 1%}
                     <div class="corsina__AddAndRemoveItem">
                         <div class="corsina__minus corsina__css">
