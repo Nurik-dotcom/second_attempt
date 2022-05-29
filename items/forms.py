@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 from users.models import *
 from django.forms.widgets import TextInput
-
+from mptt.forms import TreeNodeMultipleChoiceField
 class CategoryForms(forms.ModelForm):
     class Meta:
         model = Category

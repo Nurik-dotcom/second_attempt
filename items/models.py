@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator, MaxLeng
 import django_filters
 
 # Create your models here.
+from mptt.models import MPTTModel, TreeForeignKey
 
 class MainCategory(models.Model):
     subcategory = models.ManyToManyField('Category', null=True, blank=True, default=None, related_name='subcategory')
