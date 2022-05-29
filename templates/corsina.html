@@ -6,7 +6,7 @@
             <div class="corsina__item">
                 <div class="corsina__image">
                     <div class="corsina__img">
-                        <img src="{{ item.product.image.url }}" alt="">
+                        <img src="{{ item.product.product.image.url }}" alt="">
                     </div>
 
                     {% if item.count == 1%}
@@ -41,7 +41,7 @@
                         {{item.product.price}}
                     </div>
                     <div class="corsina__title">
-                        <p>{{item.product.name}}</p>
+                        <p>{{item.product.product.name}}</p>
                     </div>
                     <div class="corsina__info">
 
