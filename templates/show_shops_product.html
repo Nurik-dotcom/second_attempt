@@ -22,7 +22,7 @@
                         <td>{{ i.is_aviable|yesno:"Не выставлено, Выставлено, хз"}}</td>
 
                         <td>
-                            <a href="{% url 'make_in_unshowable' i.id %}">Убрать с продажи</a> <a href="{% url 'update_product_in_shop' i.id %}">Обновить</a> <a href="{% url 'delete_product' i.id %}">Удалить</a>
+                            <a href="{% url 'make_in_unshowable' i.id %}">Снять с продажи</a> <a href="{% url 'make_in_showable' i.id %}">Начать продажу</a><a href="{% url 'update_product_in_shop' i.id %}">Обновить</a> <a href="{% url 'delete_product' i.id %}">Удалить</a>
 
                     </tr>
                 {% endfor %}
