@@ -14,9 +14,10 @@ class ProductForm(forms.ModelForm):
 #         self.fields["brand"].queryset = Product.objects.filter(brand=self.request.user.profile.brand_member)
 # #     # authorID = forms.ModelChoiceField(queryset=Teacher.objects.all(),empty_label="Author", to_field_name="id")
     category=CategoryForms
+    svoistva = 'SvoistcaShop'
     class Meta:
         model=Product
-        fields=['image' ,'name', 'category', 'description']
+        fields=['image' ,'name', 'category', 'description', 'svoistva']
 
 # class ForFilter(forms.ModelForm):
 #     category=CategoryForms
