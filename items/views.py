@@ -223,7 +223,7 @@ def show_unaviable_product(request, slug):
 
 def update_product(request, pk):
     product = get_object_or_404(Product, id=pk)
-    form = UpdateProductForm(request.POST or None, instance=product)
+    form = UpdateProductForm(request.POST and request.FILES or None, instance=product)
     if form.is_valid():
         form.save()
         return redirect('homepage')

@@ -40,7 +40,7 @@ class UpdateProductForm(forms.ModelForm):
     category =CategoryForms
     class Meta:
         model = Product
-        fields = ['image', 'name', 'category', 'description']
+        fields = ['image', 'name', 'category', 'description', 'svoistva']
 
 
 
