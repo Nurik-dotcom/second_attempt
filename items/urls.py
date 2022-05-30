@@ -35,7 +35,7 @@ urlpatterns = [
     path('update_product/<int:pk>', update_product, name='update_product'),
 
 # Shop
-    path('create_product/', create_product_shop, name='create_product_shop'),
+    path('create_product_shop/', create_product_shop, name='create_product_shop'),
     path('delete_mag/<int:pk>', delete_product, name='delete_product'),
     path('update_for_shop/<int:pk>', update_product_in_shop, name='update_product_in_shop'),
     path('all_shops/', show_all_shop, name='all_shop'),
