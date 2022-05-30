@@ -736,15 +736,15 @@
                 <div class="navbar__links">
                     <div class="drop__wrapper">
                         <button class="drop__btn navbar__link" data-target="#drop__right">
-                            {{i.title}}
+                            <a href="{% url 'category' i.slug %}">{{i.title}}</a>
                         </button>
-                        <div class="drop__menu drop__right" id="drop__right">
+                        <!-- <div class="drop__menu drop__right" id="drop__right">
                             {% for b in i.subcategory.all %}
                             <a href="{% url 'category' i.slug %}">
                                 {{b.title}}
                             </a>
                             {% endfor %}
-                        </div>
+                        </div> -->
                     </div>
                     <!-- <a href="{% url 'category' i.slug %}">
                         <div class="navbar__link">
@@ -828,7 +828,7 @@
             </div>
         </div> 
     </div>
-    <script>
+    <!-- <script>
         const dropBtn = document.querySelectorAll('.drop__btn')
         const dropMenu = document.querySelectorAll('.drop__menu')
 
@@ -844,7 +844,7 @@
                 dropMenu.forEach(drop__menu=> drop__menu.classList.remove('active'))
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>
 
