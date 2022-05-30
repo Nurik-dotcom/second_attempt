@@ -332,6 +332,8 @@ def show_product_to_add(request, slug):
     a = MagazainProduct.objects.filter(shop=shop)
     productes = MagazainProduct.objects.filter(is_initial=True,  product__is_aviabale=True)
     products=0
+    f = ProductFilter(request.GET, queryset=Product.objects.filter(is_aviabale=True))
+
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
         corsina = Corsina.objects.get(user=profile)

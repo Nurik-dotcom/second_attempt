@@ -1,15 +1,64 @@
 {% extends "home.html" %}
 {% block content %}
-    <div class="tovar margin__mainpage">
-        <div class="category__title">
-            <form method="get" style="margin-bottom:20px; width: 26%;">
-                {{ filter.form.name }}
-                <input type="submit" /> 
-                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
-            </form>
-            <h2>{{ brand_title }}</h2>
+<div class="tovar margin__mainpage">
+    <div class="category__title display__flex">
+        <form method="get">
+            {{ filter.form.as_p }}
+            <div style="display: flex;flex-direction:column;">
+                <button>
+                    Поиск
+                </button>
+                <button>
+                    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+                </button>
+            </div>
+        </form>
+        <div class="header">
+            <div class="header__container display__flex">
+                <div class="header__right display__flex">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'corsina' %}">
+                            <div class="cart display__flex">
+                                <img src="../icons/cart.svg" alt="">
+                                <p>{{products}}</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'cabinet' %}">
+                            <div class="login display__flex">
+                                <div class="logo__img">
+                                    
+                                </div>
+                                <div class="name">
+                                    <p>{{user}}</p>
+                                    <a href="{% url 'logout' %}" style="margin-left: 8px;">
+                                        <p>Выйти</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}">
+                            <div class="cart display__flex">
+                                <img src="../icons/cart.svg" alt="">
+                            </div>
+                        </a>
+                        <div class="login display__flex">
+                            <a href="{% url 'login'%}">
+                                <div class="name">
+                                    <p>Войти</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'register'%}">
+                                <div class="name">
+                                    <p>Регис</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <div class="center">
+    </div>
             {% for i in filter.qs %}
                 <div class="tovar__content">
                     <a href="{% url 'product_detail' i.pk %}">
