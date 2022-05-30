@@ -763,14 +763,9 @@
                 <div class="navbar__links">
                     <div class="drop__wrapper">
                         <button class="drop__btn navbar__link" data-target="#drop__right">
-                            {{i.title}}
+                            <a href="{% url 'svoistva' i.slug %}">{{i.title}}</a>
                         </button>
-                        <div class="drop__menu drop__right" id="drop__right">
-                            <a href="{% url 'svoistva' i.slug %}">
-                                {{i.title}}
-                            </a>
-                        </div>
-                    </div>
+
                     <!-- <a href="{% url 'svoistva' i.slug %}">
                         <div class="navbar__link">
                             <img src="../icons/Name19.svg" alt="">
