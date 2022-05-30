@@ -8,10 +8,10 @@
 
         <div class="user__name">
 			{% if request.user.is_authenticated %}
-            <p>{{ user.username }} |</p>
+            <p>{{ user.username }}</p>
 
             {% if user.profile.shop_member %}
-            <a href="{% url 'shop_detail' user.profile.shop_member.slug %}"> <p>Член магазина {{ user.profile.shop_member.title }} | </p></a>
+            <a href="{% url 'shop_detail' user.profile.shop_member.slug %}"> <p>Член магазина {{ user.profile.shop_member.title }}</p></a>
             {% endif %}
             {% if user.profile.brand_member %}
             <a href="{% url 'brand_detail' user.profile.brand_member.slug %}"><p> Член бренда {{ user.profile.brand_member.title }}</p></a>
@@ -19,7 +19,7 @@
 			{% else %}
 			<p>****</p>
 			{% endif %}
-        </div>
+        </div> 
         <div class="page__title">
             <h2>Мои покупки</h2>
             <a href="{% url 'clear' %}">Очистить историю</a>
